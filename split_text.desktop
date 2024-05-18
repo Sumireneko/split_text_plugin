@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Service
+ServiceTypes=Krita/PythonPlugin
+X-KDE-Library=split_text
+X-Python-2-Compatible=false
+X-Krita-Manual=Manual.html
+Name=Split text plug-in 
+Comment=Split multiple line text by each line
