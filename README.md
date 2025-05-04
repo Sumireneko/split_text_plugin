@@ -1,8 +1,8 @@
 # Split text plug-in for Krita 5
 This is a plugin for Krita, Select a multiple line text and split with line breaks.  
 
-v0.5 it works on Krita 5.2.9 and 5.3.0
-v0.1 it works only Krita 5.2.2 - 5.2.9 
+v0.5 it works on Krita 5.2.9 and 5.3.0  
+v0.1 it works only Krita 5.2.2 - 5.2.9   
 
 ## About Split text plug-in for Krita
 ![image](./image.png)
