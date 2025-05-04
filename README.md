@@ -34,5 +34,19 @@ At first,move "split_text.action" into action folder when install this
 4. You can found the shortcut setting of this,and choose "custom"
 5. Push next to it for shortcut input.
 
+
+### Limitation ( Use SVG for Krita Internal )
+Support
+* writing-mode : horizontal-tb, vertcal-rl, vertical-lr
+* style attributes, transform (only rotation and translate)
+* Line break by  &lt;tspan&gt; tag or \n
+
+Not Support
+
+* Line break by Auto text wrap in the area text </li>
+* Line break by &lt;br&gt; tag</li>
+
+
 ## Update History
-2024.05.18 Release v0.1
+* 2025.05.04 Release v0.5 : Support vertical text, transform of kirta text shape , plain text in Krita 5.3.0 and 5.2.9
+* 2024.05.18 Release v0.1 : First release,it work only Krita 5.2.9 or earlier version
