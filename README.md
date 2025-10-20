@@ -1,8 +1,8 @@
 # Split text plug-in for Krita 5
 This is a plugin for Krita, Select a multiple line text and split with line breaks.  
-
-v0.5 it works on Krita 5.2.9 and 5.3.0  
-v0.1 it works only Krita 5.2.2 - 5.2.9   
+v0.6 it works with Krita 5.2.14and 5.3.0  
+v0.5 it works with Krita 5.2.9 and 5.3.0  
+v0.1 it works with Krita 5.2.2 - 5.2.9   
 
 ## About Split text plug-in for Krita
 ![image](./image.png)
@@ -45,10 +45,14 @@ Support
 
 Not Support
 
-* Line break by Auto text wrap in the area text </li>
-* Line break by &lt;br&gt; tag</li>
+* Line break by Auto text wrap in the area text 
+* Line break by &lt;br&gt; tag 
 
 
 ## Update History
+* 2025.10.18 Release v0.6 : Tested with Krita v5.2.14(PyQT5 with Python 3.13)
+ - Preliminary PyQt6 compatibility added Updated import logic to support PyQt6 for future Krita 6.x compatibility.
+ - Note: PyQt6 functionality has not been tested yet. This change is preparatory and not guaranteed to be stable.
+
 * 2025.05.04 Release v0.5 : Support vertical text, transform of kirta text shape , plain text in Krita 5.3.0 and 5.2.9
 * 2024.05.18 Release v0.1 : First release,it work only Krita 5.2.9 or earlier version
