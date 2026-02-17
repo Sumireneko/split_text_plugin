@@ -1,5 +1,5 @@
 # ======================================
-# Krita text split plug-in v0.6
+# Krita text split plug-in v0.7
 # ======================================
 # Copyright (C) 2025 L.Sumireneko.M
 # This program is free software: you can redistribute it and/or modify it under the 
@@ -14,30 +14,19 @@
 # If not, see <https://www.gnu.org/licenses/>. 
 
 
+# v0.7 : Qt6 / Qt5 Compatible(alpha)
+
 import xml.etree.ElementTree as ET
 import re, math, time
 
 import krita
-try:
-    if int(krita.qVersion().split('.')[0]) == 5:
-        raise
-
-    # PyQt6
-    from PyQt6.QtWidgets import *
-    from PyQt6.QtCore import QPointF, QObject, QEvent, QTimer, QSignalBlocker, pyqtSignal, Qt
-    from PyQt6.QtGui import *
-    from PyQt6 import QtCore
-
-except:
-    # PyQt5 fallback
-    from PyQt5.QtWidgets import *
-    from PyQt5.QtCore import QPointF, QObject, QEvent, QTimer, QSignalBlocker, pyqtSignal, Qt
-    from PyQt5.QtGui import *
-    from PyQt5 import QtCore
-
 from krita import *
-
-
+from .qt_compat import qt_exec,QC
+from .qt_compat import (
+    QEvent, QColor, QPalette, 
+    QDialog, QVBoxLayout, QSlider, QSpinBox, 
+    QPushButton, QColorDialog, QMessageBox
+)
 
 def clone_without(element, remove_keys=("x", "y", "dy")):
     """
@@ -322,7 +311,7 @@ def split_txt(shape):
 
     return result
 
-def qtransform_to_svg_transform(transform: QTransform):
+def qtransform_to_svg_transform(transform):
     return f"matrix({transform.m11()} {transform.m12()} {transform.m21()} {transform.m22()} {transform.m31()} {transform.m32()})"
 
 # -------
@@ -379,32 +368,39 @@ def message(mes):
     mb = QMessageBox()
     mb.setText(str(mes))
     mb.setWindowTitle('Message')
-    mb.setStandardButtons(QMessageBox.Ok)
-    ret = mb.exec()
-    if ret == QMessageBox.Ok:
+    mb.setStandardButtons(QC.StdBtn.Ok) 
+    
+    ret = qt_exec(mb) 
+
+    if ret == QC.StdBtn.Ok:
         pass # OK clicked
 
 
 # create dialog  and show it
-def notice_autoclose_dialog(message):
+def notice_autoclose_dialog(message_text):
     app = Krita.instance()
     qwin = app.activeWindow().qwindow()
     qq = qwin.size()
+    
     wpos = math.ceil(qq.width() * 0.45)
     hpos = math.ceil(qq.height() * 0.45)
-    
-    noticeDialog = QDialog() 
-    noticeDialog.setWindowFlags(QtCore.Qt.FramelessWindowHint)
-    label = QLabel(message)
+
+    noticeDialog = QDialog()
+
+    noticeDialog.setWindowFlags(QC.Window.FramelessWindowHint)
+
+    label = QLabel(message_text)
     hboxd = QHBoxLayout()
     hboxd.addWidget(label)
     noticeDialog.setLayout(hboxd)
-    noticeDialog.setWindowTitle("Title") 
+    noticeDialog.setWindowTitle("Title")
+
+    noticeDialog.move(qwin.x() + wpos, qwin.y() + hpos)
     
-    #print(qwin.x(),wpos,hpos)
-    noticeDialog.move(qwin.x()+wpos,qwin.y()+hpos)
+    # Close window
     QtCore.QTimer.singleShot(1500, noticeDialog.close)
-    noticeDialog.exec_() # show
+
+    qt_exec(noticeDialog)
 
 
 
@@ -430,3 +426,4 @@ class split_text(Extension):
         pass
 
 
+Krita.instance().addExtension(split_text(Krita.instance()))
