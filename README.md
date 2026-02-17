@@ -1,9 +1,10 @@
-# Split text plug-in for Krita 5
+# Split text plug-in for Krita
 This is a plugin for Krita, Select a multiple line text and split with line breaks.  
-v0.7 it works with Krita 5.2.14, 5.3.0 and 6.0.0  
-v0.6 it works with Krita 5.2.14 and 5.3.0  
-v0.5 it works with Krita 5.2.9 and 5.3.0  
-v0.1 it works with Krita 5.2.2 - 5.2.9   
+v0.7 — Compatible with Krita 5.2.14, 5.3.0, and 6.0.0  
+v0.6 — Compatible with Krita 5.2.14 and 5.3.0  
+v0.5 — Compatible with Krita 5.2.9 and 5.3.0  
+v0.1 — Compatible with Krita 5.2.2–5.2.9
+
 
 ## About Split text plug-in for Krita
 ![image](./image.png)
@@ -50,14 +51,16 @@ Not Support
 
 
 ## Update History
-* 2026.02.17 Release v0.7 : Tested with Krita v5.3.0 and v6.0.0
- - Added a compatibility layer for PyQt5 and PyQt6 (qt_compat.py).  
- - This layer handles various API changes, including the transition from exec_() to exec(),   
-   updated enum types, event handling differences, and changes in the UI file loader.  
+* 2026.02.17 Release v0.7 : 
+    * Tested with Krita v5.3.0 and v6.0.0
+    * Added a compatibility layer for PyQt5 and PyQt6 (qt_compat.py).  
+    * This layer handles various API changes, including the transition from exec_() to exec(),   
+    * updated enum types, event handling differences, and changes in the UI file loader.  
 
-* 2025.10.18 Release v0.6 : Tested with Krita v5.2.14(PyQT5 with Python 3.13)
- - Preliminary PyQt6 compatibility added Updated import logic to support PyQt6 for future Krita 6.x compatibility.
- - Note: PyQt6 functionality has not been tested yet. This change is preparatory and not guaranteed to be stable.
+* 2025.10.18 Release v0.6 : 
+    * Tested with Krita v5.2.14(PyQT5 with Python 3.13)
+    * Preliminary PyQt6 compatibility added Updated import logic to support PyQt6 for future Krita 6.x compatibility.
+    * Note: PyQt6 functionality has not been tested yet. This change is preparatory and not guaranteed to be stable.
 
 * 2025.05.04 Release v0.5 : Support vertical text, transform of kirta text shape , plain text in Krita 5.3.0 and 5.2.9
 * 2024.05.18 Release v0.1 : First release,it work only Krita 5.2.9 or earlier version
